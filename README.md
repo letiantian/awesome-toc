@@ -43,16 +43,16 @@ jQuery。
 | windowMinWidth | int | 单位px，当窗口宽度低于此值时，不显示目录 |
 | sideBarId | string | 目录的id，最好带随机字符，以防和网页中id冲突/混淆 |
 | sideBarWidth | string | 目录的宽度 |
-| sideBarPrefix | string | 目录中生成的元素的class的前缀，，最好带随机字符，以防和网页中id冲突/混淆|
+| sideBarPrefix | string | 目录中生成的元素的class的前缀，<br/>最好带随机字符，以防和网页中id冲突/混淆|
 | headingList | array of string | 识别哪些h*标签 |
 | enableToTopButton | bool |是否显示“返回顶部”的按钮|
 | enableToc | bool | 是否生成目录 |
 | overlay | bool | 是否以遮盖方式显示目录 |
 | autoDetectHeadings | bool | 是否自动探测使用哪些h*标签生成目录 |
 | contentId | string | 若不为空，则根据这个id对应的元素的内容生成目录 |
-| contentClass | string | 若不为空，则根据这个class对应的第一个元素的内容生成目录 |
+| contentClass | string | 若不为空，则根据这个class对应<br/>的第一个元素的内容生成目录 |
 | displayNow | bool| 是否立即显示目录|
-| topOffset | int | 有些网页的菜单是固定在顶部的，占有一定空间，该属性值和菜单的高度应该一致。如果设置的合理，点击目录项时，页面滚动后，标题不会被覆盖 |
+| topOffset | int | 有些网页的菜单是固定在顶部的，<br/>占有一定空间，该属性值和菜单的高度应该一致。<br/>如果设置的合理，点击目录项时，<br/>页面滚动后，标题不会被覆盖 |
 
 
 
