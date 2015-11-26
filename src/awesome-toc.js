@@ -30,7 +30,7 @@
         contentId: '',      // 如果有定义，则从这里把h*提取出来
         contentClass: '',   // 如果有定义，则从这里把h*提取出来。优先级低于contetnId
         displayNow: false,  // 马上显示目录
-        topOffset: 0,
+        topOffset: 0,       // px
     };
 
 
