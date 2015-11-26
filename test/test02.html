@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>awesome toc - Hi, </title>
+
+        <meta name="description" content="">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+        <style type="text/css">
+        body {
+            font: 13px/1.4 Helvetica,arial,nimbussansl,liberationsans,freesans,clean,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+            color: #333;
+        }
+        .containter {
+            margin: 0 auto;
+            width: 20%;
+            min-width: 400px;
+        }
+
+        .item {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 120%;
+        }
+
+        .item.header {
+            margin-top: 40px;
+            font-size: 320%;
+            /*border-bottom: 2px solid;*/
+        }
+
+        .item a {
+            text-decoration: none;
+            color: #4078c0;
+        }
+
+        .item a:hover {
+            text-decoration: underline;
+            color: ##4078c0;
+        }
+
+        .item a:visited {
+            text-decoration: none;
+            color: #4078c0;
+        }
+
+        h2 {
+            margin-top: 120px;
+        }
+
+        h3 {
+            margin-top: 40px;
+        }
+
+        </style>
+    </head>
+
+    <body>
+
+        <div class="containter">
+            <div class="item header">Hi, awesome toc</div>
+            <h2> What's it? </h2>
+            <p> Go to <a href="https://github.com/someus/awesome-toc">https://github.com/someus/awesome-toc</a> for more info.</p>
+            <h2>Heading 1</h2>
+            <h3>Sub 1</h3>
+            <h2>Heading 2</h2>
+            <h3>Sub 1</h3>
+            <h3>Sub 2</h3>
+            <h2>Heading 3</h2>
+            <h2>Heading 4</h2>
+            <h2>Heading 5</h2>
+        </div>
+
+        <script type="text/javascript" src="./jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="./awesome-toc.min.js"></script>
+        <script type="text/javascript">
+            $.awesome_toc({        
+              autoDetectHeadings: true,
+              enableToTopButton: true,
+              title: "INDEX",
+              css: {
+                  fontSize: "14px",
+                  largeFontSize: "18px",
+              },
+            });
+        </script>
+
+    </body>
+</html>
