@@ -69,6 +69,8 @@ javascript:(function(){var a=function(a){var b=document.createElement("script");
 
 ![](./bookmarklet.gif)
 
+小书签会去加载多个js文件，由于是动态加载，有些问题要考虑，可以参考[动态加载js文件的正确姿势](https://github.com/someus/how-to-load-dynamic-script)。
+
 
 ## 其他
 
