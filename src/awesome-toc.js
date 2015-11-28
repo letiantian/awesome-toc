@@ -2,10 +2,13 @@
 
     var DEBUG = true;
 
-    var log = function(msg) {
-        if (DEBUG)
-            console.log(msg);
-    };
+    var log = function() {};
+
+    if (DEBUG) {
+        log = console.log;
+    }
+
+    log('start');
 
     var baseConfig = {
         css: {
@@ -66,8 +69,10 @@
             contentRef = document.getElementsByClassName(baseConfig.contentClass)[0];
         }
         if (baseConfig.contentId.length > 0) {
-            contentRef = getElementById(baseConfig.contentId);
+            contentRef = document.getElementById(baseConfig.contentId);
         }
+
+        log(contentRef);
 
         var toc = documentRef.getElementById(baseConfig.sideBarId);
         // console.log(toc);
@@ -88,8 +93,7 @@
 
         var headingList = baseConfig.headingList; // 若为空，[].slice.call会报错
         if (headingList.length > 0) {
-            var headings = [].slice.call(documentRef.body.querySelectorAll(headingList.join(", ")));
-            // console.log(headings);
+            var headings = [].slice.call(contentRef.querySelectorAll(headingList.join(", ")));
             headings.forEach(function (heading, index) {
                 var anchor = documentRef.createElement("a");
                 anchor.setAttribute("name", "" + baseConfig.sideBarPrefix + index);
@@ -193,7 +197,7 @@
 
 
     var toggleButtonClickListener = function() { 
-        // log(baseConfig.overlay);
+        log("in toggleButtonClickListener: overlay " + baseConfig.overlay);
         if ($(window).width() < baseConfig.windowMinWidth) {
             return;
         }

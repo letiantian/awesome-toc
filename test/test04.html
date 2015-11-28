@@ -68,25 +68,29 @@
 
         <div class="containter">
             <div class="item header">Hi, awesome toc</div>
-            <h2> What's it? </h2>
-            <p> Go to <a href="https://github.com/someus/awesome-toc">https://github.com/someus/awesome-toc</a> for more info.</p>
-            <h2>Heading 1</h2>
-            <h3>Sub 1</h3>
-            <h2>Heading 2</h2>
-            <h3>Sub 1</h3>
-            <h3>Sub 2</h3>
-            <h2>Heading 3</h2>
-            <h2>Heading 4</h2>
-            <h2>Heading 5</h2>
+            <h2> I am not a title in content </h2>
+            <div id="content">
+                <h2> What's it? </h2>
+                <p> Go to <a href="https://github.com/someus/awesome-toc">https://github.com/someus/awesome-toc</a> for more info.</p>
+                <h2>Heading 1</h2>
+                <h3>Sub 1</h3>
+                <h2>Heading 2</h2>
+                <h3>Sub 1</h3>
+                <h3>Sub 2</h3>
+                <h2>Heading 3</h2>
+                <h2>Heading 4</h2>
+                <h2>Heading 5</h2>
+            </div>
         </div>
 
         <script type="text/javascript" src="../build/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="../src/awesome-toc.js"></script>
         <script type="text/javascript">
-            $.awesome_toc({        
+            $.awesome_toc({   
               autoDetectHeadings: true,
               enableToTopButton: true,
               title: "INDEX",
+              contentId: "content",
               css: {
                   fontSize: "14px",
                   largeFontSize: "18px",
