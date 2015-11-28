@@ -210,7 +210,7 @@
             });
             if(!baseConfig.overlay) {
                 $("body").animate({
-                    "padding-right":"0",
+                    "margin-right":"0",
                 });
             }
 
@@ -221,7 +221,7 @@
             });
             if(!baseConfig.overlay) {
                 $("body").animate({
-                    "padding-right":baseConfig.sideBarWidth,
+                    "margin-right":baseConfig.sideBarWidth,
                 });
             }
 

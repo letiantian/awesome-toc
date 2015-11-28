@@ -56,14 +56,14 @@
 
     })();
 
-    jqueryUrl = 'http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.min.js';
-    tocUrl = 'http://hi.letiantian.me/toc/awesome-toc.min.js';
-    tocletUrl = 'http://hi.letiantian.me/toc/gentoc.min.js';
+    jqueryUrl = 'http://127.0.0.1:8000/build/jquery-1.11.3.min.js';
+    tocUrl    = 'http://127.0.0.1:8000/build/awesome-toc.min.js';
+    gentocUrl = 'http://127.0.0.1:8000/build/gentoc.min.js';
 
     if (typeof(jQuery) == 'undefined' || typeof($) == 'undefined') {
-        Loader.load([jqueryUrl, tocUrl, tocletUrl]);
+        Loader.load([jqueryUrl, tocUrl, gentocUrl]);
     } else {
-        Loader.load([tocUrl, tocletUrl]);
+        Loader.load([tocUrl, gentocUrl]);
     }
 
 })();

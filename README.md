@@ -58,12 +58,16 @@ jQuery。
 
 ## 小书签
 
-> 目前相关js文件放在[这里](http://hi.letiantian.me/toc)，但是不稳定 而且在https的网站中使用可能会遇到“已阻止载入混合活动内容”这类问题。 **正在找合适的CDN来托管**
+首先开启本地的服务：
+```plain
+$ cd awesome-toc
+$ python -m SimpleHTTPServer
+```
 
 在浏览器中创建书签，url使用下面的内容：
 
 ```js
-javascript:(function(){var a=function(a){var b=document.createElement("script");b.setAttribute("src",a+"?time="+Date.parse(new Date)),document.body.appendChild(b)};a("http://hi.letiantian.me/toc/loader.min.js")})();
+javascript:(function(){var a=function(a){var b=document.createElement("script");b.setAttribute("src",a+"?time="+Date.parse(new Date)),document.body.appendChild(b)};a("http://127.0.0.1:8000/build/loader.min.js")})();
 ```
 
 示例：
