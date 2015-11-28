@@ -1,6 +1,6 @@
 (function ($) {
 
-    var DEBUG = true;
+    var DEBUG = false;
 
     var log = function(msg) {
         if (DEBUG) {
@@ -23,6 +23,7 @@
         sideBarId: "sidebar-toc-Ik4D",
         sideBarWidth: "300px",
         sideBarPrefix: "sidebar-toc-Ik4D-",
+        itemPrefix: "- ",
         headingList: ["h1", "h2", "h3", "h4", "h5", "h6"],
         enableToTopButton: true,
         enableToc: true,
@@ -100,7 +101,7 @@
 
                 var link = documentRef.createElement("a");
                 link.setAttribute("href", "#"+ baseConfig.sideBarPrefix + index);
-                link.textContent = '- ' + heading.textContent;   // html标签会被去掉
+                link.textContent = baseConfig.itemPrefix + heading.textContent;   // html标签会被去掉
 
                 $(link).click(function(e){
                     $(this).parent().parent().find("a").css({"color": baseConfig.css.fontColor});
@@ -352,24 +353,17 @@
                 baseConfig.headingList = getNiceHeadingTags();
             }
             
-            
-
             baseConfig.headingList = compactHeadingTags(baseConfig.headingList);
 
 
             if (baseConfig.enableToc && !isToggleBtnExist()) {
-                log(111);
                 addToggleSidebar();
                 addToggleButton();
             }
 
-            log(222);
-
             if (baseConfig.enableToTopButton && !isToTopBtnExist()) {
                 addToTopButton();
             }
-
-            log(333);
 
             if (baseConfig.displayNow) {
                 toggleButtonClickListener();
