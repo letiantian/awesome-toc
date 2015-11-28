@@ -39,7 +39,8 @@
 
         script.onerror = loadError;
 
-        script.src = url+'?'+'time='+Date.parse(new Date());
+        // script.src = url+'?'+'time='+Date.parse(new Date());
+        script.src = url;
         document.body.appendChild(script);
       };
 

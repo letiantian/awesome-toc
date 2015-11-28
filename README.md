@@ -1,7 +1,7 @@
-awesome toc
----
+# awesome-toc
 
-这是一个为网页生成目录的小工具，也支持回到顶部的功能。
+
+awesome-toc是一个为网页生成目录的小工具，也支持回到顶部的功能。
 
 ![](./demo.gif)
 
@@ -53,11 +53,13 @@ jQuery。
 | contentClass | string | 若不为空，则根据这个class对应<br/>的第一个元素的内容生成目录 |
 | displayNow | bool| 是否立即显示目录|
 | topOffset | int | 单位px。有些网页的菜单是固定在顶部的，<br/>占有一定空间，该属性值和菜单的高度应该一致。<br/>如果设置的合理，点击目录项时，<br/>页面滚动后，标题不会被覆盖 |
-
+| itemPrefix | string | 每个菜单项目的前缀，例如"- " |
 
 
 
 ## 小书签
+
+> 目前相关js文件放在[这里](http://hi.letiantian.me/toc)，但是不稳定。 **正在找合适的CDN来托管**
 
 在浏览器中创建书签，url使用下面的内容：
 
@@ -68,8 +70,6 @@ javascript:(function(){var a=function(a){var b=document.createElement("script");
 示例：
 
 ![](./bookmarklet.gif)
-
-小书签会去加载多个js文件，由于是动态加载，有些问题要考虑，可以参考[动态加载js文件的正确姿势](https://github.com/someus/how-to-load-dynamic-script)。
 
 
 ## 其他
