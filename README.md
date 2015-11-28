@@ -58,7 +58,7 @@ jQuery。
 
 ## 小书签
 
-> 目前相关js文件放在[这里](http://hi.letiantian.me/toc)，但是不稳定。 **正在找合适的CDN来托管**
+> 目前相关js文件放在[这里](http://hi.letiantian.me/toc)，但是不稳定 而且在https的网站中使用可能会遇到“已阻止载入混合活动内容”这类问题。 **正在找合适的CDN来托管**
 
 在浏览器中创建书签，url使用下面的内容：
 
@@ -75,8 +75,6 @@ javascript:(function(){var a=function(a){var b=document.createElement("script");
 
 界面设计上参考了[hexo-theme-next](https://github.com/iissnan/hexo-theme-next)。
 
-目前的小书签托管在github的pages服务中，在https的网站中使用可能会遇到“已阻止载入混合活动内容”这类问题。
-
-
 ## License
 
+MIT
