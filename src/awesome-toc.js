@@ -2,13 +2,11 @@
 
     var DEBUG = true;
 
-    var log = function() {};
-
-    if (DEBUG) {
-        log = console.log;
-    }
-
-    log('start');
+    var log = function(msg) {
+        if (DEBUG) {
+            console.log(msg);
+        }
+    };
 
     var baseConfig = {
         css: {
@@ -165,7 +163,7 @@
         toggleBtn.setAttribute('id', baseConfig.sideBarPrefix+'toggleBtn');
         $(toggleBtn).css({
             "background": "#222 none repeat scroll 0 0",
-            "bottom": "45px",
+            "bottom": "55px",
             "cursor": "pointer",
             "height": "15px",
             "line-height": "0",
@@ -239,9 +237,10 @@
 
     var addToTopButton = function() {
         var toTopBtn = document.createElement("div");
+        toTopBtn.setAttribute('id', baseConfig.sideBarPrefix+'toTopBtn');
         $(toTopBtn).css({
             "background": "#222 none repeat scroll 0 0",
-            "bottom": "15px",
+            "bottom": "25px",
             "cursor": "pointer",
             "height": "15px",
             "line-height": "15px",
@@ -330,8 +329,15 @@
         return result;
     }
 
-    var isExist = function() {
+    var isToggleBtnExist = function() {
         if ($('#'+baseConfig.sideBarPrefix+'toggleBtn').length == 0) 
+            return false;
+        else
+            return true;
+    }
+
+    var isToTopBtnExist = function () {
+        if ($('#'+baseConfig.sideBarPrefix+'toTopBtn').length == 0) 
             return false;
         else
             return true;
@@ -341,22 +347,30 @@
     $.extend({
         awesome_toc: function(config) {
             $.extend(true, baseConfig, config);
-            // console.log(baseConfig);
 
             if (baseConfig.autoDetectHeadings) {
                 baseConfig.headingList = getNiceHeadingTags();
             }
-            // baseConfig.headingList = baseConfig.headingList.join('|').toLowerCase().split('|');
+            
+            
+
             baseConfig.headingList = compactHeadingTags(baseConfig.headingList);
-            // console.log(baseConfig.headingList);
 
-            if (isExist()) return;
 
-            addToggleSidebar();
-            addToggleButton();
-            if (baseConfig.enableToTopButton) {
+            if (baseConfig.enableToc && !isToggleBtnExist()) {
+                log(111);
+                addToggleSidebar();
+                addToggleButton();
+            }
+
+            log(222);
+
+            if (baseConfig.enableToTopButton && !isToTopBtnExist()) {
                 addToTopButton();
             }
+
+            log(333);
+
             if (baseConfig.displayNow) {
                 toggleButtonClickListener();
             }
