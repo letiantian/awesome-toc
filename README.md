@@ -1,6 +1,5 @@
 # awesome-toc
 
-
 awesome-toc是一个为网页生成目录的小工具，也支持回到顶部的功能。
 
 ![](./demo.gif)
