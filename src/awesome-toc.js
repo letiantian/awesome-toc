@@ -252,7 +252,8 @@
             "z-index": ""+(baseConfig.css.zIndex+1),
             "color": "#fff",
             "font-size": "16px",
-        }).html("&#9650;");
+            "text-align": "center",
+        }).html("<span style=\"margin: 0 auto\">&#9650;</span>");
 
         toTopBtn.onclick = function() {
             $("html, body").animate({scrollTop: 0}, 600);
