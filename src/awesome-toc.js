@@ -8,6 +8,8 @@
         }
     };
 
+    var scrollVar = {};
+
     var baseConfig = {
         css: {
             fontSize: "90%",
@@ -55,6 +57,8 @@
             "font-size": baseConfig.css.fontSize,
             "text-align": "left",
         });
+        generateTableOfContents();
+        enableMenuScrollEvent();
     };
 
 
@@ -107,9 +111,16 @@
                     $(this).parent().parent().find("a").css({"color": baseConfig.css.fontColor});
                     $(this).css({"color": baseConfig.css.activeFontColor});
                     var offsetTop = $($(this).attr("href")).offset().top - baseConfig.topOffset;
-                    $('html, body').stop().animate({ 
-                        scrollTop: offsetTop
-                    }, 300);
+                    disableMenuScrollEvent();
+                    $('html, body').stop().animate(
+                        {   
+                            scrollTop: offsetTop 
+                        },
+                        {
+                            duration: 300,
+                            complete: enableMenuScrollEvent,
+                        }
+                    );
                     e.preventDefault();
                 });
 
@@ -225,13 +236,6 @@
                 });
             }
 
-
-            if (!sideBar.hasClass(baseConfig.sideBarPrefix+"exists")) {
-                generateTableOfContents();
-                sideBar.addClass(baseConfig.sideBarPrefix+"exists");
-                activeMenuItemWhileScroll();
-            }
-
         }
     };
 
@@ -262,37 +266,32 @@
         $("body").append(toTopBtn);
     };
 
+    var scrollHandler = function() {
+        // log("scroll");
+        var fromTop = $(this).scrollTop()+10;
 
-    var activeMenuItemWhileScroll = function() {
-        var lastId,
-            sideBar = $("#"+baseConfig.sideBarId),
-            menuItems = sideBar.find("a"),
-            scrollItems = menuItems.map(function(){  
-                var item = $($(this).attr("href"));
-                if (item.length) { return item; }
-            });
-
-        // console.log(sideBar);
-        // console.log(menuItems);
-
-        $(window).scroll(function(){
-           var fromTop = $(this).scrollTop()+10;
-
-           var cur = scrollItems.map(function(){
-             if ($(this).offset().top < fromTop)
-               return this;
-           });
-           // Get the id of the current element
-           cur = cur[cur.length-1];
-           var id = cur && cur.length ? cur[0].id : "";
-
-           if (lastId !== id) {
-                lastId = id;
-                menuItems.css({"color": baseConfig.css.fontColor});
-                menuItems.filter("[href=#"+id+"]").css({"color": baseConfig.css.activeFontColor});
-
-           }                   
+        var cur = scrollVar.scrollItems.map(function(){
+            if ($(this).offset().top < fromTop)
+                return this;
         });
+
+        // Get the id of the current element
+        cur = cur[cur.length-1];
+        var id = cur && cur.length ? cur[0].id : "";
+
+        if (scrollVar.lastId !== id) {
+            scrollVar.lastId = id;
+            scrollVar.menuItems.css({"color": baseConfig.css.fontColor});
+            scrollVar.menuItems.filter("[href=#"+id+"]").css({"color": baseConfig.css.activeFontColor});
+        }
+    };
+
+    var disableMenuScrollEvent = function() {
+        $(window).off( "scroll", scrollHandler );
+    };
+
+    var enableMenuScrollEvent = function() {
+        $(window).scroll( scrollHandler );
     };
 
 
@@ -360,6 +359,17 @@
             if (baseConfig.enableToc && !isToggleBtnExist()) {
                 addToggleSidebar();
                 addToggleButton();
+
+                scrollVar.lastId = '';
+                scrollVar.sideBar = $("#"+baseConfig.sideBarId),
+                scrollVar.menuItems = scrollVar.sideBar.find("a"),
+                scrollVar.scrollItems = scrollVar.menuItems.map(function(){  
+                    var item = $($(this).attr("href"));
+                    if (item.length) { return item; }
+                });
+
+                log(scrollVar);
+
             }
 
             if (baseConfig.enableToTopButton && !isToTopBtnExist()) {
