@@ -64,9 +64,7 @@
 
     var generateTableOfContents = function(documentRef) {
         var documentRef = documentRef || document;
-        
-        baseConfig.contentId = baseConfig.contentId.trim();
-        baseConfig.contentClass = baseConfig.contentClass.trim();
+
         contentRef = documentRef.body;
         if (baseConfig.contentClass.length > 0) {
             contentRef = document.getElementsByClassName(baseConfig.contentClass)[0];
@@ -301,11 +299,19 @@
         firstThreshold = firstThreshold || 1;
         level = level || 6;
         var allHeadingTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+        var _scope = 'body';
+        if (baseConfig.contentClass.length > 0) {
+            _scope = '.' + baseConfig.contentClass;
+        }
+        if (baseConfig.contentId.length > 0) {
+            _scope = '#' + baseConfig.contentId;
+        }
+        scope = $(_scope);
         var result = [];
         for (var idx=0; idx < allHeadingTags.length; idx++) {
             heading = allHeadingTags[idx];
             if (result.length == 0){
-                if ($(heading).length >= firstThreshold) {
+                if (scope.find(heading).length >= firstThreshold) {
                     result.push(heading);
                 }
             } else {
@@ -348,6 +354,9 @@
     $.extend({
         awesome_toc: function(config) {
             $.extend(true, baseConfig, config);
+
+            baseConfig.contentId = baseConfig.contentId.trim();
+            baseConfig.contentClass = baseConfig.contentClass.trim();
 
             if (baseConfig.autoDetectHeadings) {
                 baseConfig.headingList = getNiceHeadingTags();
