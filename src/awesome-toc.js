@@ -76,7 +76,6 @@
         log(contentRef);
 
         var toc = documentRef.getElementById(baseConfig.sideBarId);
-        // console.log(toc);
 
         var title = documentRef.createElement("div");
         $(title).css({
@@ -292,13 +291,7 @@
         $(window).scroll( scrollHandler );
     };
 
-
-    // 把第一个出现次数大于等于threshold的h*放入数组的第一个元素，
-    // 之后的就看存不存在，存在就放进去最多放level个
-    var getNiceHeadingTags = function(firstThreshold, level) {
-        firstThreshold = firstThreshold || 1;
-        level = level || 6;
-        var allHeadingTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+    var getScope = function() {
         var _scope = 'body';
         if (baseConfig.contentClass.length > 0) {
             _scope = '.' + baseConfig.contentClass;
@@ -306,7 +299,17 @@
         if (baseConfig.contentId.length > 0) {
             _scope = '#' + baseConfig.contentId;
         }
-        scope = $(_scope);
+        return $(_scope);
+    };
+
+
+    // 把第一个出现次数大于等于threshold的h*放入数组的第一个元素，
+    // 之后的就看存不存在，存在就放进去最多放level个
+    var getNiceHeadingTags = function(firstThreshold, level) {
+        firstThreshold = firstThreshold || 1;
+        level = level || 6;
+        var allHeadingTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+        scope = getScope();
         var result = [];
         for (var idx=0; idx < allHeadingTags.length; idx++) {
             heading = allHeadingTags[idx];
@@ -326,29 +329,31 @@
     };
 
     var compactHeadingTags = function(headingList) {
+        scope = getScope();
+
         var result = [];
         for (var idx=0; idx < headingList.length; idx++) {
             heading = headingList[idx];
-            if ($(heading).length > 0) {
+            if (scope.find(heading).length > 0) {
                 result.push(heading.toLowerCase());
             } 
         }
         return result;
-    }
+    };
 
     var isToggleBtnExist = function() {
         if ($('#'+baseConfig.sideBarPrefix+'toggleBtn').length == 0) 
             return false;
         else
             return true;
-    }
+    };
 
     var isToTopBtnExist = function () {
         if ($('#'+baseConfig.sideBarPrefix+'toTopBtn').length == 0) 
             return false;
         else
             return true;
-    }
+    };
 
     // 插件
     $.extend({
