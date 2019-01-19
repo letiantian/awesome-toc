@@ -17,13 +17,13 @@
             fontColor: "#999",  // similar to grey
             activeFontColor: "#87daff",  // similar to cyan
             lineHeight: "1.8",
-            backgroundColor: "#222",
+            backgroundColor: "rgba(0,0,0,0.7)",
             zIndex: 999999,
         },
         title: "文章目录",
-        windowMinWidth: 600,        // 单位px，窗口宽度小于该值时，不显示目录
+        windowMinWidth: 100,        // 单位px，窗口宽度小于该值时，不显示目录
         sideBarId: "sidebar-toc-Ik4D",
-        sideBarWidth: "300px",
+        sideBarWidth: "16em",
         sideBarPrefix: "sidebar-toc-Ik4D-",
         itemPrefix: "- ",
         headingList: ["h1", "h2", "h3", "h4", "h5", "h6"],
